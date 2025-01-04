@@ -1,2 +1,6 @@
-Fully working PHP/AJAX contact form script is available in the pro version of the template.
-You can buy it from: https://bootstrapmade.com/hidayah-free-simple-html-template-for-corporate/
+Thanks for downloading this template!
+
+Template Name: Hidayah
+Template URL: https://bootstrapmade.com/hidayah-free-simple-html-template-for-corporate/
+Author: BootstrapMade.com
+License: https://bootstrapmade.com/license/
