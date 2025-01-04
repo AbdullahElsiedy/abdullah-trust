@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Clothing Store</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .cart-button {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            font-size: 18px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px;
+        }
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px;
+        }
+        .product-item {
+            background-color: white;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .product-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .price {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+        .add-to-cart {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .add-to-cart:hover {
+            background-color: #555;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        #cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .cart-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 100%;
+        }
+        .cart-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        .cart-content li {
+            margin-bottom: 10px;
+        }
+        .total {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" style="color: white;">Back to Home</a>
+    </header>
+
+    <h1 style="text-align: center;">Men's Clothing</h1>
+    <p style="text-align: center;">Discover stylish and comfortable men's apparel. Shop now for the latest trends!</p>
+
+    <!-- Cart Button -->
+    <div class="cart-button">
+        <i class="bi bi-cart"></i> Cart (0)
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+        <!-- 15 Products -->
+        <!-- Product 1 -->
+        <div class="product-item" data-product-id="1">
+            <img src="product1.jpg" alt="Product 1">
+            <h3>Classic T-Shirt</h3>
+            <p>High-quality cotton t-shirt, perfect for any occasion.</p>
+            <div class="price">$25.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-item" data-product-id="2">
+            <img src="product2.jpg" alt="Product 2">
+            <h3>Leather Jacket</h3>
+            <p>Stylish and durable leather jacket for a sophisticated look.</p>
+            <div class="price">$120.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-item" data-product-id="3">
+            <img src="product3.jpg" alt="Product 3">
+            <h3>Casual Jeans</h3>
+            <p>Comfortable jeans, perfect for everyday wear.</p>
+            <div class="price">$50.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-item" data-product-id="4">
+            <img src="product4.jpg" alt="Product 4">
+            <h3>Sports Shoes</h3>
+            <p>Durable sports shoes for your active lifestyle.</p>
+            <div class="price">$80.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-item" data-product-id="5">
+            <img src="product5.jpg" alt="Product 5">
+            <h3>Formal Shirt</h3>
+            <p>Elegant formal shirt for business or casual events.</p>
+            <div class="price">$40.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-item" data-product-id="6">
+            <img src="product6.jpg" alt="Product 6">
+            <h3>Summer Shorts</h3>
+            <p>Lightweight and comfortable shorts for summer.</p>
+            <div class="price">$30.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-item" data-product-id="7">
+            <img src="product7.jpg" alt="Product 7">
+            <h3>Winter Coat</h3>
+            <p>Stay warm in the cold with this stylish winter coat.</p>
+            <div class="price">$150.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-item" data-product-id="8">
+            <img src="product8.jpg" alt="Product 8">
+            <h3>Beanie Hat</h3>
+            <p>Keep cozy with this stylish beanie hat.</p>
+            <div class="price">$20.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product-item" data-product-id="9">
+            <img src="product9.jpg" alt="Product 9">
+            <h3>Denim Jacket</h3>
+            <p>Trendy and classic denim jacket for all seasons.</p>
+            <div class="price">$60.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product-item" data-product-id="10">
+            <img src="product10.jpg" alt="Product 10">
+            <h3>Graphic T-Shirt</h3>
+            <p>Stand out with a unique graphic t-shirt design.</p>
+            <div class="price">$22.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product-item" data-product-id="11">
+            <img src="product11.jpg" alt="Product 11">
+            <h3>Chinos</h3>
+            <p>Casual chinos, perfect for a smart-casual look.</p>
+            <div class="price">$45.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="product-item" data-product-id="12">
+            <img src="product12.jpg" alt="Product 12">
+            <h3>Polo Shirt</h3>
+            <p>Classic polo shirt, comfortable and stylish.</p>
+            <div class="price">$35.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 13 -->
+        <div class="product-item" data-product-id="13">
+            <img src="product13.jpg" alt="Product 13">
+            <h3>Blazer</h3>
+            <p>Sharp and sleek blazer for formal occasions.</p>
+            <div class="price">$120.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 14 -->
+        <div class="product-item" data-product-id="14">
+            <img src="product14.jpg" alt="Product 14">
+            <h3>Track Pants</h3>
+            <p>Comfortable track pants for your workout sessions.</p>
+            <div class="price">$40.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 15 -->
+        <div class="product-item" data-product-id="15">
+            <img src="product15.jpg" alt="Product 15">
+            <h3>Dress Shoes</h3>
+            <p>Elegant dress shoes for formal events.</p>
+            <div class="price">$90.00</div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Men's Clothing Store. All Rights Reserved.</p>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal">
+        <div class="cart-content">
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <div class="total">
+                <strong>Total: $<span id="cart-total">0.00</span></strong>
+            </div>
+            <button onclick="clearCart()">Clear Cart</button>
+            <button onclick="checkout()">Proceed to Checkout</button>
+            <button onclick="closeCart()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // تخزين السلة في localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // تحديث واجهة السلة
+        function updateCartUI() {
+            const cartButton = document.querySelector('.cart-button');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+
+            cartButton.innerHTML = `<i class="bi bi-cart"></i> Cart (${cart.length})`;
+
+            cartItemsContainer.innerHTML = '';
+            let totalPrice = 0;
+
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - $${item.price} x ${item.quantity}`;
+                cartItemsContainer.appendChild(li);
+                totalPrice += item.price * item.quantity;
+            });
+
+            cartTotal.textContent = totalPrice.toFixed(2);
+        }
+
+        // إضافة منتج إلى السلة
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productItem = this.closest('.product-item');
+                const productId = productItem.getAttribute('data-product-id');
+                const productName = productItem.querySelector('h3').textContent;
+                const productPrice = parseFloat(productItem.querySelector('.price').textContent.replace('$', ''));
+                
+                const existingProduct = cart.find(item => item.id === productId);
+
+                if (existingProduct) {
+                    existingProduct.quantity++;
+                } else {
+                    cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartUI();
+            });
+        });
+
+        // فتح السلة
+        document.querySelector('.cart-button').addEventListener('click', function() {
+            document.getElementById('cart-modal').style.display = 'flex';
+        });
+
+        // إغلاق السلة
+        function closeCart() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        // مسح السلة
+        function clearCart() {
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartUI();
+            closeCart();
+        }
+
+        // متابعة إلى الدفع
+        function checkout() {
+            alert("Proceeding to checkout...");
+        }
+
+        // عند تحميل الصفحة، تحديث واجهة السلة
+        window.onload = updateCartUI;
+    </script>
+</body>
+</html>
